@@ -6,6 +6,19 @@ pipeline {
         }
     }
     stages {
+	stage('OWASP-DC') {
+		agent any
+	    steps {
+		dependencyCheck additionalArguments: ''' 
+			    --disableYarnAudit
+		            -o './'
+		            -s './'
+		            -f 'ALL' 
+		            --prettyPrint''', odcInstallation: 'OWASP-DC'
+		
+		dependencyCheckPublisher pattern: 'dependency-check-report.xml'
+	    }
+	}
         stage('Build') {
             steps {
                 sh 'npm install'
@@ -23,17 +36,5 @@ pipeline {
                 sh './jenkins/scripts/kill.sh'
             }
         }
-        stage('OWASP-DC') {
-	    steps {
-		dependencyCheck additionalArguments: ''' 
-			    --disableYarnAudit
-		            -o './'
-		            -s './'
-		            -f 'ALL' 
-		            --prettyPrint''', odcInstallation: 'OWASP-DC'
-		
-		dependencyCheckPublisher pattern: 'dependency-check-report.xml'
-	    }
-	}
     }
 }
