@@ -13,6 +13,7 @@ pipeline {
         stage('Build') {
             steps {
             	cleanWs()
+            	checkout scm
                 sh 'npm install'
             }
         }
