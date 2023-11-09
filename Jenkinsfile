@@ -23,7 +23,7 @@ pipeline {
                 sh './jenkins/scripts/kill.sh'
             }
         }
-        stage('OWASP-DC') {
+        stage('dependency-check') {
         	agent any
 	    steps {
 		dependencyCheck additionalArguments: ''' 
@@ -31,7 +31,7 @@ pipeline {
 		            -o './'
 		            -s './'
 		            -f 'ALL' 
-		            --prettyPrint''', odcInstallation: 'OWASP-DC'
+		            --prettyPrint''', odcInstallation: 'dependency-check'
 		
 		dependencyCheckPublisher pattern: 'dependency-check-report.xml'
 	    }
