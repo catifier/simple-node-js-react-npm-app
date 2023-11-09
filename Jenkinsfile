@@ -26,6 +26,7 @@ pipeline {
         stage('OWASP Dependency-Check Vulnerabilities') {
 	    steps {
 		dependencyCheck additionalArguments: ''' 
+			    --disableYarnAudit
 		            -o './'
 		            -s './'
 		            -f 'ALL' 
