@@ -5,9 +5,6 @@ pipeline {
             args '-p 3000:3000'
         }
     }
-    tools {
-    	org.jenkinsci.plugins.DependencyCheck.tools.DependencyCheckInstallation
-    }
     stages {
         stage('Build') {
             steps {
@@ -19,14 +16,14 @@ pipeline {
                 sh './jenkins/scripts/test.sh'
             }
         }
-        stage('OWASP Dependency-Check Vulnerabilities') {
+        stage('OWASP-DC') {
 	    steps {
 		dependencyCheck additionalArguments: ''' 
 			    --disableYarnAudit
 		            -o './'
 		            -s './'
 		            -f 'ALL' 
-		            --prettyPrint''', odcInstallation: 'OWASP Dependency-Check Vulnerabilities'
+		            --prettyPrint''', odcInstallation: 'OWASP-DC'
 		
 		dependencyCheckPublisher pattern: 'dependency-check-report.xml'
 	    }
