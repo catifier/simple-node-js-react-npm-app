@@ -6,7 +6,7 @@ pipeline {
         }
     }
     tools {
-        dependency-check 'dependency-check-8.4.2'
+        dependency-check "dependency-check-8.4.2"
     }
     stages {
         stage('Build') {
