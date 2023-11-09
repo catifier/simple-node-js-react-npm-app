@@ -5,6 +5,9 @@ pipeline {
             args '-p 3000:3000'
         }
     }
+    tools {
+    	org.jenkinsci.plugins.DependencyCheck.tools.DependencyCheckInstallation
+    }
     stages {
         stage('Build') {
             steps {
