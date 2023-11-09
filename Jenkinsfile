@@ -5,9 +5,6 @@ pipeline {
             args '-p 3000:3000'
         }
     }
-    tools {
-        dependency-check "dependency-check-8.4.2"
-    }
     stages {
         stage('Build') {
             steps {
