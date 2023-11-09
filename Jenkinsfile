@@ -23,14 +23,14 @@ pipeline {
                 sh './jenkins/scripts/kill.sh'
             }
         }
-        stage('dependency-check') {
+        stage('OWASP-DC') {
 	    steps {
 		dependencyCheck additionalArguments: ''' 
 			    --disableYarnAudit
 		            -o './'
 		            -s './'
 		            -f 'ALL' 
-		            --prettyPrint''', odcInstallation: 'dependency-check'
+		            --prettyPrint''', odcInstallation: 'OWASP-DC'
 		
 		dependencyCheckPublisher pattern: 'dependency-check-report.xml'
 	    }
