@@ -5,9 +5,14 @@ pipeline {
             args '-p 3000:3000'
         }
     }
+    options {
+        // This is required if you want to clean before build
+        skipDefaultCheckout(true)
+    }
     stages {
         stage('Build') {
             steps {
+            	cleanWs()
                 sh 'npm install'
             }
         }
