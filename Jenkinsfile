@@ -24,7 +24,6 @@ pipeline {
             }
         }
         stage('dependency-check') {
-        	agent any
 	    steps {
 		dependencyCheck additionalArguments: ''' 
 			    --disableYarnAudit
