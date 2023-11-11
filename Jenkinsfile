@@ -38,7 +38,7 @@ pipeline {
             }
         }
 		stage('OWASP-DC') {
-			agent { docker 'openjdk:17-jre' }
+			agent none
 			steps {
 				dependencyCheck additionalArguments: ''' 
 						--disableYarnAudit
