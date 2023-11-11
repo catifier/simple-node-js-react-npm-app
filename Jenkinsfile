@@ -24,6 +24,7 @@ pipeline {
             }
         }
 	stage('OWASP-DC') {
+		agent any
 	    steps {
 		dependencyCheck additionalArguments: ''' 
 			    --disableYarnAudit
