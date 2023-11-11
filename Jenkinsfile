@@ -38,7 +38,7 @@ pipeline {
             }
         }
 		stage('OWASP-DC') {
-			agent any
+			agent docker { image 'amazoncorretto:17-alpine-jdk' }
 			steps {
 				dependencyCheck additionalArguments: ''' 
 						--disableYarnAudit
