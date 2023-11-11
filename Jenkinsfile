@@ -5,9 +5,6 @@ pipeline {
             args '-p 3000:3000'
         }
     }
-    tools {
-	    jdk
-    }
     stages {
         stage('Build') {
             steps {
